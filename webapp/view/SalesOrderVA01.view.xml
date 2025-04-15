@@ -1,0 +1,161 @@
+<mvc:View controllerName="com.s4hana.salesorder.controller.SalesOrderVA01"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:table = "sap.m.Table"
+    xmlns:layout="sap.ui.layout.form"
+    xmlns:unified="sap.ui.unified"
+    xmlns:form="sap.ui.comp.smartform"
+    xmlns:sf="sap.ui.comp.smartfield"
+    xmlns:core="sap.ui.core"
+    displayBlock="true">
+    <Page id="page" title="{i18n>title}">
+        <customHeader>
+            <Toolbar>
+                <Title text="New Sales Order"/>
+                <ToolbarSpacer/>
+                <Button text="Save" press="onSave"/>
+                <Button text="Close" press="onClose"/>
+                <Button text="Save and Close" press="onSaveAndClose"/>
+            </Toolbar>
+        </customHeader>  
+        <VBox class="sapUiSmallMargin">
+            <FlexBox justifyContent="SpaceBetween" alignItems="Start" direction="Row">
+                <!-- Left Section -->
+                <VBox width="50%">
+                    <Title text="General"/>
+                    <FlexBox justifyContent="Start" alignItems="Center" direction="Row">
+                        <Label text="Sales Order Type:" required="true"/>
+                        <VBox width="50px" />
+                        <Input id="_IDGenInput"  width="300px"/>
+                    </FlexBox>
+                    <FlexBox justifyContent="Start" alignItems="Center" direction="Row">
+                        <Label text="Sold To Party:" required="true"/>
+                        <VBox width="75px" />
+                            <Input
+                                id="customerInput"
+                                value="{salesOrderModel>/Customer}"
+                                showValueHelp="true"
+                                valueHelpRequest="onCustomerValueHelp"
+                                width="300px"
+                            />
+                    </FlexBox>
+                    <FlexBox justifyContent="Start" alignItems="Center" direction="Row">
+                        <Label text="Sales Organization:"/>
+                         <VBox width="50px" />
+                            <Input
+                            id="salesOrgInput"
+                            value="{salesOrderModel>/SalesOrganization}"
+                            showValueHelp="true"
+                            valueHelpRequest="onSalesOrgValueHelp"
+                            width="300px"
+                            />
+                    </FlexBox>
+                    <FlexBox justifyContent="Start" alignItems="Center" direction="Row">
+                        <Label text="Distribution Channel:"/>
+                        <VBox width="40px" />
+                            <Input
+                                id="distributionInput"
+                                value="{salesOrderModel>/DistributionChannel}"
+                                showValueHelp="true"
+                                valueHelpRequest="onDistributionChannelValueHelp"
+                                width="300px"
+                            />
+                    </FlexBox>
+                    <FlexBox justifyContent="Start" alignItems="Center" direction="Row">
+                        <Label text="Organization Division:"/>
+                        <VBox width="35px" />
+                            <Input
+                                id="divisionInput"
+                                value="{salesOrderModel>/OrganizationDivision}"
+                                showValueHelp="true"
+                                valueHelpRequest="onDivisionValueHelp"
+                                width="300px"
+                            />
+                    </FlexBox>
+                    <FlexBox justifyContent="Start" alignItems="Center" direction="Row">
+                        <Label text="Customer PO:"/>
+                        <VBox width="80px" />
+                        <Input id="_IDGenInput5"  width="300px"/>
+                    </FlexBox>
+                    <FlexBox justifyContent="Start" alignItems="Center" direction="Row">
+                        <Label text="Transaction Currency:"/>
+                        <VBox width="35px" />
+                        <Input id="_IDGenInput16"  width="300px"/>
+                    </FlexBox>
+                </VBox>
+            </FlexBox>
+            <!-- Item Table -->
+            <VBox class="sapUiSmallMarginTop">
+                <Title text="Items"/>
+                <Toolbar>
+                    <Button text="Add Row" press="onAddRow"/>
+                    <Button text="Remove Row" press="onRemoveRow"/>
+                </Toolbar>
+                <Table id="itemTable" items="{salesOrderModel>/Item}" mode="SingleSelect">
+                <columns>
+                    <Column>
+                        <Text text="Product"/>
+                    </Column>
+                    <Column>
+                        <Text text="Quantity" />
+                    </Column>
+                    <Column>
+                        <Text text="Unit" />
+                    </Column>
+                    <Column>
+                        <Text text="Amount" />
+                    </Column>
+                    <Column>
+                        <Text text="Transaction Currency" />
+                    </Column>
+                </columns>
+                    <items>
+                        <ColumnListItem>
+                            <cells>
+                                <Input value="{salesOrderModel>Product}" />
+                                <Input value="{salesOrderModel>RequestedQuantity}" />
+                                <Input value="{salesOrderModel>RequestedQuantityISOUnit}" />
+                                <Input value="{salesOrderModel>ConditionRateAmount}" />
+                                <Input value="{salesOrderModel>TransactionCurrency}" />
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>
+            </VBox>
+            <!-- Variant Configuration Fields -->
+            <VBox class="sapUiSmallMarginTop">
+                <Title text="Variant Configuration"/>
+                <FlexBox justifyContent="Start" alignItems="Center" direction="Row">
+                    <Label text="Thickness:"/>
+                    <VBox width="65px" />
+                    <Input id="_IDGenInput9"  width="300px"/>
+                </FlexBox>
+                <FlexBox justifyContent="Start" alignItems="Center" direction="Row">
+                    <Label text="Nominal OD:"/>
+                    <VBox width="50px" />
+                    <Input id="_IDGenInput10"  width="300px"/>
+                </FlexBox>
+                <FlexBox justifyContent="Start" alignItems="Center" direction="Row">
+                    <Label text="Steel Type:"/>
+                    <VBox width="60px" />
+                    <Input id="_IDGenInput11"  width="300px"/>
+                </FlexBox>
+                <FlexBox justifyContent="Start" alignItems="Center" direction="Row">
+                    <Label text="Customer Tag:"/>
+                    <VBox width="40px" />
+                    <Input id="_IDGenInput12"  width="300px"/>
+                </FlexBox>
+                <FlexBox justifyContent="Start" alignItems="Center" direction="Row">
+                    <Label text="Micro Hardness:"/>
+                    <VBox width="30px" />
+                    <Input id="_IDGenInput13"  width="300px"/>
+                </FlexBox>
+                <FlexBox justifyContent="Start" alignItems="Center" direction="Row">
+                    <Label text="Charpy Direction:"/>
+                    <VBox width="25px" />
+                    <Input id="_IDGenInput14"  width="300px"/>
+                </FlexBox>
+            </VBox>
+        </VBox>
+    </Page>
+</mvc:View>

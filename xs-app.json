@@ -1,0 +1,60 @@
+{
+  "welcomeFile": "/index.html",
+  "authenticationMethod": "route",
+  "routes": [
+    {
+      "source": "^/sap/opu/odata4/sap/api_salesorder/srvd_a2x/sap/salesorder/0001/(.*)$",
+      "destination": "S4HANACLOUD-my415065",
+      "authenticationType": "xsuaa",
+      "csrfProtection": false
+    },
+    {
+      "source": "^/sap/opu/odata/sap/API_SALESORGANIZATION_SRV/(.*)$",
+      "destination": "S4HANACLOUD-my415065",
+      "authenticationType": "xsuaa",
+      "csrfProtection": false
+    },
+    {
+      "source": "^/sap/opu/odata/sap/API_DISTRIBUTIONCHANNEL_SRV/(.*)$",
+      "destination": "S4HANACLOUD-my415065",
+      "authenticationType": "xsuaa",
+      "csrfProtection": false
+    },
+    {
+      "source": "^/sap/opu/odata/sap/API_DIVISION_SRV/(.*)$",
+      "destination": "S4HANACLOUD-my415065",
+      "authenticationType": "xsuaa",
+      "csrfProtection": false
+    },
+    {
+      "source": "^/sap/opu/odata/sap/API_BUSINESS_PARTNER/(.*)$",
+      "destination": "S4HANACLOUD-my415065",
+      "authenticationType": "xsuaa",
+      "csrfProtection": false
+    },
+    {
+      "source": "^/sap/opu/odata/sap/API_PRODUCT_SRV/(.*)$",
+      "destination": "S4HANACLOUD-my415065",
+      "authenticationType": "xsuaa",
+      "csrfProtection": false
+    },    
+    {
+      "source": "^/resources/(.*)$",
+      "target": "/resources/$1",
+      "authenticationType": "none",
+      "destination": "ui5"
+    },
+    {
+      "source": "^/test-resources/(.*)$",
+      "target": "/test-resources/$1",
+      "authenticationType": "none",
+      "destination": "ui5"
+    },
+    {
+      "source": "^(.*)$",
+      "target": "$1",
+      "service": "html5-apps-repo-rt",
+      "authenticationType": "xsuaa"
+    }
+  ]
+}

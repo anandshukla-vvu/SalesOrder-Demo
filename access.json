@@ -1,0 +1,14 @@
+{
+  "allowed-apps": [
+    {
+      "name": "coms4hanasalesorder",
+      "access-to": [
+        {
+          "type": "destination",
+          "name": "S4HANACLOUD_my415065",
+          "namespace": ""
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,216 @@
+{
+  "_version": "1.65.0",
+  "sap.app": {
+    "id": "com.s4hana.salesorder",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:basic",
+      "version": "1.16.5",
+      "toolsId": "3237439c-38fc-48e9-9d9d-e20eab62701a"
+    },
+    "crossNavigation": {
+      "inbounds": {
+        "Sales_Order-Display": {
+          "semanticObject": "Sales_Order",
+          "action": "Display",
+          "title": "{{Sales_Order-Display.flpTitle}}",
+          "signature": {
+            "parameters": {},
+            "additionalParameters": "allowed"
+          }
+        }
+      }
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/sap/opu/odata4/sap/api_salesorder/srvd_a2x/sap/salesorder/0001/",
+        "type": "OData",
+        "settings": {
+          "odataVersion": "4.0",
+          "localUri": "localService/metadata.xml"
+        }
+      },
+      "salesOrgVHService": {
+        "uri": "/sap/opu/odata/sap/API_SALESORGANIZATION_SRV/",
+        "type": "OData",
+        "settings": {
+          "odataVersion": "2.0",
+          "localUri": "localService/salesOrgVHMetadata.xml"
+        }
+     },
+     "distVHService": {
+        "uri": "/sap/opu/odata/sap/API_DISTRIBUTIONCHANNEL_SRV/",
+        "type": "OData",
+        "settings": {
+          "odataVersion": "2.0",
+          "localUri": "localService/distVHMetadata.xml"
+        }
+     },
+     "divisionVHService": {
+      "uri": "/sap/opu/odata/sap/API_DIVISION_SRV/",
+      "type": "OData",
+      "settings": {
+        "odataVersion": "2.0",
+        "localUri": "localService/divisionVHMetadata.xml"
+      }
+    },
+    "customerVHService": {
+      "uri": "/sap/opu/odata/sap/API_BUSINESS_PARTNER/",
+      "type": "OData",
+      "settings": {
+        "odataVersion": "2.0",
+        "localUri": "localService/customerVHMetadata.xml"
+      }
+    },
+        "productVHService": {
+      "uri": "/sap/opu/odata/sap/API_PRODUCT_SRV/",
+      "type": "OData",
+      "settings": {
+        "odataVersion": "2.0",
+        "localUri": "localService/productVHMetadata.xml"
+      }
+    }
+
+  }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.133.0",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "com.s4hana.salesorder.i18n.i18n"
+        }
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true
+        }
+      },
+      "salesOrgVHModel": {
+      "dataSource": "salesOrgVHService",
+      "preload": true,
+      "settings": {
+        "defaultBindingMode": "TwoWay"
+      }
+    },
+    "distributionchannelVHModel": {
+      "dataSource": "distVHService",
+      "preload": true,
+      "settings": {
+        "defaultBindingMode": "TwoWay"
+      }
+    },
+    "divisionVHModel": {
+      "dataSource": "divisionVHService",
+      "preload": true,
+      "settings": {
+        "defaultBindingMode": "TwoWay"
+      }
+    },
+    "customerVHModel": {
+      "dataSource": "customerVHService",
+      "preload": true,
+      "settings": {
+        "defaultBindingMode": "TwoWay"
+      }
+    },
+    "productVHModel": {
+      "dataSource": "productVHService",
+      "preload": true,
+      "settings": {
+        "defaultBindingMode": "TwoWay"
+      }
+    }
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "controlAggregation": "pages",
+        "controlId": "app",
+        "transition": "slide",
+        "type": "View",
+        "viewType": "XML",
+        "path": "com.s4hana.salesorder.view",
+        "async": true,
+        "viewPath": "com.s4hana.salesorder.view"
+      },
+      "routes": [
+        {
+          "name": "RouteSalesOrderVA01OWL",
+          "pattern": "",
+          "target": ["TargetSalesOrderVA01OWL"]
+        },
+        {
+          "name": "RouteSalesOrderVA01",
+          "pattern": "SalesOrderDetail/{SalesOrderID}",
+          "target": ["TargetSalesOrderVA01"]
+        }
+      ],
+      "targets": {
+        "TargetSalesOrderVA01OWL": {
+          "id": "SalesOrderVA01OWL",
+          "name": "SalesOrderVA01OWL"
+        },
+        "TargetSalesOrderVA01": {
+          "id": "SalesOrderVA01",
+          "name": "SalesOrderVA01"
+        }
+      }
+    },
+    "rootView": {
+      "viewName": "com.s4hana.salesorder.view.App",
+      "type": "XML",
+      "id": "App"
+    }
+  },
+  "sap.cloud": {
+    "public": true,
+    "service": "coms4hanasalesorder"
+  }
+}

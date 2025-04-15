@@ -1,0 +1,4 @@
+{
+    "breadcrumbs.enabled": true,
+    "SAP HANA Database Explorer.UseObjectsDefinitionForSqlGeneration.RetentionTime": 7
+}

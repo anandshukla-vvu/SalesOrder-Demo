@@ -1,0 +1,51 @@
+<mvc:View controllerName="com.s4hana.salesorder.controller.SalesOrderVA01OWL"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:layout="sap.ui.layout.form"
+    xmlns:unified="sap.ui.unified"
+    xmlns:core="sap.ui.core">
+    <Page id="owlview" title="Sales Order">
+        <content>
+            <Table id="salesOrderTable" items="{ path: 'localSalesOrders>/' }">
+                <headerToolbar>
+                    <Toolbar>
+                        <ToolbarSpacer/>
+                        <Button text="New Sales Order" press="onPressNewSalesOrderButton"/>
+                    </Toolbar>
+                </headerToolbar>
+                <columns>
+                    <Column>
+                        <Text text="Sales Order ID"/>
+                    </Column>
+                    <Column>
+                        <Text text="Sold-to Party"/>
+                    </Column>
+                    <Column>
+                        <Text text="Request Delivery Date"/>
+                    </Column>
+                    <Column>
+                        <Text text="Customer Reference"/>
+                    </Column>
+                    <Column>
+                        <Text text="Net Value"/>
+                    </Column>
+                    <Column>
+                        <Text text="Document Date"/>
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem>
+                        <cells>
+                            <Text text="{localSalesOrders>SalesOrder}"/>
+                            <Text text="{localSalesOrders>SoldToParty}"/>
+                            <Text text="{path: 'localSalesOrders>RequestedDeliveryDate'}"/>
+                            <Text text="{localSalesOrders>PurchaseOrderByCustomer}"/>
+                            <Text text="{path: 'localSalesOrders>TotalNetAmount', type: 'sap.ui.model.type.Float', formatOptions: { minFractionDigits: 2, maxFractionDigits: 2}}"/>
+                            <Text text="{path: 'localSalesOrders>CreationDate'}"/>
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </content>
+    </Page>
+</mvc:View>
