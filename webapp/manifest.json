@@ -68,16 +68,7 @@
         "odataVersion": "2.0",
         "localUri": "localService/customerVHMetadata.xml"
       }
-    },
-        "productVHService": {
-      "uri": "/sap/opu/odata/sap/API_PRODUCT_SRV/",
-      "type": "OData",
-      "settings": {
-        "odataVersion": "2.0",
-        "localUri": "localService/productVHMetadata.xml"
-      }
     }
-
   }
   },
   "sap.ui": {
